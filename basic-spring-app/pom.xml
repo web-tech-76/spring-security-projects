@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>basic-spring-security</groupId>
+    <artifactId>basic-spring-security-app</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>basic-spring-app</name>
+    <description>basic-spring-app</description>
+    <properties>
+        <java.version>16</java.version>
+    </properties>
+
+    <parent>
+        <artifactId>parent-app-web</artifactId>
+        <groupId>parent-app</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
