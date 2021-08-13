@@ -15,8 +15,11 @@ import java.util.List;
 @Component
 public class OtpAuthProvider implements AuthenticationProvider {
 
-    @Autowired
-    OtpRepository otpRepository;
+    final OtpRepository otpRepository;
+
+    public OtpAuthProvider(OtpRepository otpRepository) {
+        this.otpRepository = otpRepository;
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -34,7 +37,7 @@ public class OtpAuthProvider implements AuthenticationProvider {
     }
 
     @Override
-    public boolean supports(Class<?> authentication) {
-        return UsernamePasswordAuthenticationToken.class.equals(authentication);
+    public boolean supports(Class<?> aClass) {
+        return OtpAuthentication.class.equals(aClass);
     }
 }

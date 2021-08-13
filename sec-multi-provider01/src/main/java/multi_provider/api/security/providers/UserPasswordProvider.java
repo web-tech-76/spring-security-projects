@@ -41,14 +41,6 @@ public class UserPasswordProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        try {
-            Boolean authBool = UsernamePasswordAuthenticationToken.class.equals(aClass);
-            System.out.println("is authentication class? = " + authBool);
-            return authBool;
-        }
-        catch(RuntimeException re){
-            System.out.println("Exception in supports method  = " + re.getMessage());
-            return false;
-        }
+        return  UsernamePasswordAuthenticationToken.class.equals(aClass);
     }
 }
