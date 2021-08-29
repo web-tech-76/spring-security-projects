@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import provider02.api.resources.Otp;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Repository
 public interface OtpRepository extends JpaRepository<Otp, Integer> {
 
     @Query(value = "select o from Otp o where o.userid=?1 and o.expiry > ?2 ")
-    Optional<Otp> findOtpByUseridAndExpiry(int id, Timestamp timestamp);
+    Optional<Otp> findOtpByUseridAndExpiry(int id, LocalDateTime localDateTime);
 }

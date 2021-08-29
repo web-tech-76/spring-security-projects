@@ -4,22 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.management.relation.Role;
+import javax.persistence.*;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
-public @Data class RoleUser {
+@Data
+public class RoleUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
+    private  Integer id;
 
-    private int roleid;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Roles roleid;
 
-    private int userid;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private User userid;
 
 }

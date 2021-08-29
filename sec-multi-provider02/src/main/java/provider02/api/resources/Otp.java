@@ -1,12 +1,18 @@
 package provider02.api.resources;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@Data
 public class Otp {
 
     @Id
@@ -17,34 +23,7 @@ public class Otp {
 
     private String code;
 
-    private Timestamp expiry;
+    private LocalDateTime expiry;
 
 
-    public int getId() {
-        return id;
-    }
-
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Timestamp getExpiry() {
-        return expiry;
-    }
-
-    public void setExpiry(Timestamp expiry) {
-        this.expiry = expiry;
-    }
 }

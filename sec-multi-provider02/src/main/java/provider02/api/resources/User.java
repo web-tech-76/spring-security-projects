@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public @Data class User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +28,8 @@ public @Data class User {
 
     private String last;
 
-
+    @OneToMany(mappedBy = "roleid")
+    private Collection<RoleUser> roleUser;
 
 
 }

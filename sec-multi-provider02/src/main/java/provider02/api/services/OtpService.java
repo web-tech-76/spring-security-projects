@@ -8,9 +8,8 @@ import provider02.api.resources.User;
 import provider02.api.util.OtpUtil;
 import provider02.api.util.UserType;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class OtpService {
@@ -52,31 +51,26 @@ public class OtpService {
     public int generateOtpAndSave(String username) {
         int otpCode= 0;
         int id;
-        var timestamp= new Timestamp(System.currentTimeMillis() + TimeUnit.MINUTES.toSeconds(360));
+        var localDateTime= LocalDateTime.now().plusMinutes(2l) ;
 
         id = getUserType(username).getId();
-        //System.out.println(" id to send for otp check = " + id);
-
         if(id !=0 && null == getUserOtp(id)) {
             Otp otp = new Otp();
             otp.setUserid(id);
             otpCode=new OtpUtil().generateIntOtp(9999);
             otp.setCode(String.valueOf(otpCode));
-            otp.setExpiry(timestamp);
+            otp.setExpiry(localDateTime);
             otpRepository.save(otp);
         }
-
-        //System.out.println(" otp code for user id  = " + id + " is = " + otpCode);
         return otpCode;
     }
 
     public String getUserOtp(int userid){
-        Timestamp timestamp= new Timestamp(System.currentTimeMillis());
-        Optional<Otp> optionalOtp= otpRepository.findOtpByUseridAndExpiry(userid,timestamp);
+        var localDateTime= LocalDateTime.now();
+        Optional<Otp> optionalOtp= otpRepository.findOtpByUseridAndExpiry(userid,localDateTime);
         Otp otpBean=  optionalOtp.orElse(null);
 
         if(null!=otpBean) {
-          //  System.out.println("otpBean.getCode() = " + otpBean.getCode());
             return otpBean.getCode();
         }
 

@@ -28,6 +28,8 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         this.userPasswordProvider = userPasswordProvider;
     }
 
+
+
     @Autowired
     public void setOtpAuthProvider(OtpAuthProvider otpAuthProvider){
         this.otpAuthProvider = otpAuthProvider;
