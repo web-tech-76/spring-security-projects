@@ -17,6 +17,7 @@ import provider02.api.services.UserService;
 @Configuration
 public class AppConfig extends WebSecurityConfigurerAdapter {
 
+
     private final AuthProvider authProvider;
 
     private final AuthFilter authFilter;
