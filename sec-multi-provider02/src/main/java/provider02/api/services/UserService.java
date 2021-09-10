@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import provider02.api.repositories.UserAccountRepository;
 import provider02.api.repositories.UserRepository;
 import provider02.api.resources.User;
@@ -12,10 +13,10 @@ import provider02.api.resources.UserAccount;
 import provider02.api.security.model.UserPrincipal;
 import provider02.api.util.UserType;
 
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserService implements  UserDetailsService {
 
     private final UserRepository userRepository;
@@ -65,7 +66,6 @@ public class UserService implements  UserDetailsService {
     }
 
 
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void createUser(User user){
 
         // create register record

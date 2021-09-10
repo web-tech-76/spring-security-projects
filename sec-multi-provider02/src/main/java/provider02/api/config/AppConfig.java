@@ -28,9 +28,11 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
         this.authFilter=authFilter;
     }
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)  {
-                auth.authenticationProvider(authProvider);
+
+        auth.authenticationProvider(authProvider);
     }
 
     @Override
